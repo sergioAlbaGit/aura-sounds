@@ -1,5 +1,6 @@
 import {  Component } from '@angular/core';
 import { SafeHtml, DomSanitizer } from '@angular/platform-browser';
+import { SoundService } from '../../../services/sound.service';
 
 @Component({
   selector: 'header-menu',
@@ -7,9 +8,11 @@ import { SafeHtml, DomSanitizer } from '@angular/platform-browser';
   templateUrl: './header-menu.component.html'
 })
 export class HeaderMenuComponent {
+
+
   iconList: SafeHtml[];
 
-  constructor(private sanitizer: DomSanitizer) {
+  constructor(private sanitizer: DomSanitizer, private soundService: SoundService) {
     this.iconList = [
       this.sanitizeSvg(`
         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -35,4 +38,16 @@ export class HeaderMenuComponent {
   sanitizeSvg(svg: string): SafeHtml {
     return this.sanitizer.bypassSecurityTrustHtml(svg);
   }
+
+
+onIconClick(index: number) {
+  console.log('click muted')
+  if (index === 1) {
+    this.soundService.muteAll();
+  }
+}
+  muteAllSounds() {
+    this.soundService.muteAll();
+  }
+
  }

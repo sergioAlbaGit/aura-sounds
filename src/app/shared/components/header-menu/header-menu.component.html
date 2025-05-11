@@ -3,7 +3,12 @@
 >
   @for (icon of iconList; track $index) {
   <li class="flex-1 flex justify-center items-center">
-    <a [innerHTML]="icon"> </a>
+    <a
+      [innerHTML]="icon"
+      (click)="$index === 1 && muteAllSounds()"
+      class="cursor-pointer"
+    >
+    </a>
   </li>
   }
 </ul>
