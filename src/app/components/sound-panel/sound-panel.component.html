@@ -1,0 +1,28 @@
+<div class="flex justify-center w-full p-5">
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8 lg:gap-16 w-full max-w-6xl"
+  >
+    @for (sound of sounds; track $index) {
+    <div
+      class="flex flex-col items-center justify-center gap-4 sm:gap-6 lg:gap-8"
+    >
+      <a
+        class="cursor-pointer h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 lg:h-32 lg:w-32 bg-green-500/65 rounded-2xl flex items-center justify-center"
+        [innerHTML]="sound.icon"
+      ></a>
+      <input
+        type="range"
+        min="0"
+        max="1"
+        step="0.01"
+        [value]="sound.volume"
+        (input)="onVolumeChange($event, sound)"
+        class="range range-success w-16 sm:w-20 md:w-24 lg:w-32 h-8 rounded-lg bg-gray-500/65 accent-primary transition-all"
+      />
+      <span class="text-lg sm:text-xl font-medium text-white text-center">
+        {{ sound.name }}
+      </span>
+    </div>
+    }
+  </div>
+</div>
