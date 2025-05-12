@@ -8,6 +8,7 @@
     >
       <a
         class="cursor-pointer h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 lg:h-32 lg:w-32 bg-green-500/65 rounded-2xl flex items-center justify-center"
+        (click)="onSoundClick($index)"
       >
         <img
           [src]="sound.icon"

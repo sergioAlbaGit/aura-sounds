@@ -1,11 +1,11 @@
-<ul
-  class="menu menu-horizontal bg-base-200/80 rounded-box w-3/5 flex bg-fixed fixed"
->
+<ul class="menu menu-horizontal bg-base-200/80 rounded-box w-3/5 flex fixed">
   @for (icon of iconList; track $index) {
   <li class="flex-1 flex justify-center items-center">
     <a
       [innerHTML]="icon"
-      (click)="$index === 1 && muteAllSounds()"
+      (click)="$index === 0 && muteAllSounds()"
+      (click)="$index === 1 && playAllSounds()"
+      (click)="$index === 2 && stopAllSounds()"
       class="cursor-pointer"
     >
     </a>

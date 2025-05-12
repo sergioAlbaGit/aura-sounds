@@ -28,4 +28,23 @@ export class SoundService {
       sound.audio.volume = 0;
     });
   }
+
+  playAll(){
+        this.sounds.forEach(sound => {
+        sound.audio.play().catch(err =>
+          console.warn(`No se pudo reproducir ${sound.name}:`, err)
+        );
+      });
+  }
+
+  stopAll() {
+    this.sounds.forEach(sound => {
+      try {
+        sound.audio.pause(); // ← No retorna Promesa
+      } catch (err) {
+        console.warn(`No se pudo pausar ${sound.name}:`, err);
+      }
+    });
+  }
+
 }

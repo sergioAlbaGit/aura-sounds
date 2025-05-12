@@ -15,22 +15,19 @@ export class HeaderMenuComponent {
   constructor(private sanitizer: DomSanitizer, private soundService: SoundService) {
     this.iconList = [
       this.sanitizeSvg(`
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-        </svg>
-      `),
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 24 24"  class="h-8 w-8" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+ <path fill="gray" d="M24,4c0-1.7-1.3-3-3-3H11C9.3,1,8,2.3,8,4v2.6L1.5,0L0,1.5L22.5,24l1.4-1.4l-1.2-1.2c0.8-0.9,1.3-2.1,1.3-3.3  c0-0.2,0-0.3-0.1-0.5H24C24,17.5,24,4,24,4z M22,14c-0.8-0.6-1.9-1-3-1c-1.2,0-2.4,0.5-3.3,1.3L10,8.6V4c0-0.6,0.4-1,1-1h10  c0.6,0,1,0.4,1,1C22,4,22,14,22,14z M8,14c-0.8-0.6-1.9-1-3-1c-2.8,0-5,2.2-5,5s2.2,5,5,5s5-2.2,5-5v-3.8l-2-2V14L8,14z"/>
+</svg>
+
+        `),
       this.sanitizeSvg(`
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M9 5l-5 5H2v4h2l5 5V5zm7.53 1.47L13.06 10m0 0l3.47 3.47M13.06 10L16.53 6.53M13.06 10L9.59 13.47" />
-        </svg>
-      `),
+        <svg xmlns="http://www.w3.org/2000/svg" id="Filled" viewBox="0 0 24 24" class="h-8 w-8"> <path fill="gray" d="M20.492,7.969,10.954.975A5,5,0,0,0,3,5.005V19a4.994,4.994,0,0,0,7.954,4.03l9.538-6.994a5,5,0,0,0,0-8.062Z"/></svg>
+         `),
+
       this.sanitizeSvg(`
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M21 12.79A9 9 0 1111.21 3a7 7 0 0010.08 9.79z" />
-        </svg>
+<svg xmlns="http://www.w3.org/2000/svg" id="Bold" viewBox="0 0 24 24" class="h-8 w-8"> <path fill="gray" d="M7,0A4,4,0,0,0,3,4V20a4,4,0,0,0,8,0V4A4,4,0,0,0,7,0ZM8,20a1,1,0,0,1-2,0V4A1,1,0,0,1,8,4Z"/> <path fill="gray" d="M17,0a4,4,0,0,0-4,4V20a4,4,0,0,0,8,0V4A4,4,0,0,0,17,0Zm1,20a1,1,0,0,1-2,0V4a1,1,0,0,1,2,0Z"/></svg>
+
       `)
     ];
   }
@@ -48,6 +45,14 @@ onIconClick(index: number) {
 }
   muteAllSounds() {
     this.soundService.muteAll();
+  }
+
+  playAllSounds(){
+    this.soundService.playAll();
+  }
+
+  stopAllSounds(){
+    this.soundService.stopAll();
   }
 
  }

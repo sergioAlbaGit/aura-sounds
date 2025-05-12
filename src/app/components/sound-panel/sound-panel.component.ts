@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { SoundService } from '../../services/sound.service';
 
@@ -37,6 +37,12 @@ export class SoundPanelComponent implements OnInit {
     audio: new Audio('assets/sounds/cricket.mp3'),
     volume: 0.0,
   },
+  {
+    name: 'Pájaros',
+    icon: 'assets/icons/svg/pajaro.svg', // ruta directa
+    audio: new Audio('assets/sounds/birds.mp3'),
+    volume: 0.0,
+  },
 ];
     this.sounds.forEach(sound => {
       sound.audio.loop = true;
@@ -49,8 +55,9 @@ export class SoundPanelComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     // Espera una interacción del usuario
-    document.addEventListener('click', () => {
+    document.addEventListener('click' , () => {
       this.sounds.forEach(sound => {
         sound.audio.play().catch(err =>
           console.warn(`No se pudo reproducir ${sound.name}:`, err)
@@ -68,9 +75,19 @@ export class SoundPanelComponent implements OnInit {
     sound.audio.volume = value;
   }
 
+  volumeTouched = signal(false);
   onVolumeChange(event: Event, sound: Sound) {
+    this.volumeTouched.set(true);
     const input = event.target as HTMLInputElement;
     const volume = input.valueAsNumber;
     this.updateVolume(sound, volume);
   }
+
+  onSoundClick(index: number): void {
+    const input = document.querySelectorAll('input[type="range"]')[index] as HTMLInputElement;
+    let volume = input.valueAsNumber >= 1 ? 0 : input.valueAsNumber + 0.1;
+    this.updateVolume(this.sounds[index], volume);
+  }
+
+
 }
