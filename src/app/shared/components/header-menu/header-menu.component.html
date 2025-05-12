@@ -1,14 +1,17 @@
 <ul class="menu menu-horizontal bg-base-200/80 rounded-box w-3/5 flex fixed">
   @for (icon of iconList; track $index) {
-  <li class="flex-1 flex justify-center items-center">
+  <li class="flex-1 flex justify-center items-center gap-2">
     <a
       [innerHTML]="icon"
-      (click)="$index === 0 && muteAllSounds()"
-      (click)="$index === 1 && playAllSounds()"
-      (click)="$index === 2 && stopAllSounds()"
+      (click)="onIconClick($index)"
       class="cursor-pointer"
-    >
-    </a>
+    ></a>
   </li>
-  }
+  @if ($index === 3) {
+  <input
+    type="number"
+    class="input input-bordered input-sm w-15 text-left"
+    [ngModel]="timeTimer()"
+    (ngModelChange)="timeTimer.set($event)"
+  />} }
 </ul>
