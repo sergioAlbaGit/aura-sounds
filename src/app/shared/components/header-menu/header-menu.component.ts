@@ -1,7 +1,6 @@
 import {  Component, signal } from '@angular/core';
 import { SafeHtml, DomSanitizer } from '@angular/platform-browser';
 import { SoundService } from '../../../services/sound.service';
-import {  timer } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -11,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class HeaderMenuComponent {
 
+  currentTimerId: any;
   iconList: SafeHtml[];
   timeTimer = signal(5);
 
@@ -45,32 +45,42 @@ export class HeaderMenuComponent {
     return this.sanitizer.bypassSecurityTrustHtml(svg);
   }
 
+  notification = '';
+showNotification(message: string) {
+  this.notification = message;
+  setTimeout(() => (this.notification = ''), 2000); // desaparece a los 2 segundos
+}
+
 
 onIconClick(index: number) {
   switch (index) {
     case 0:
       this.soundService.muteAll();
+      this.showNotification('Sonidos silenciados');
       break;
     case 1:
       this.soundService.playAll();
+      this.showNotification('Reproduciendo sonidos');
       break;
     case 2:
       this.soundService.stopAll();
+      this.showNotification('Sonidos detenidos');
       break;
     case 3:
       this.timer(this.timeTimer());
+      this.showNotification('Temporizador iniciado de ' + this.timeTimer() + ' minutos');
       break;
   }
 }
 
-  timer(time: number) {
-    console.log('start timer',time)
-    timer(time*1000*60).subscribe(() => {
-      this.soundService.stopAll();
-      console.log('stop all sounds')
-    }
-    );
-  }
+timer(time: number) {
+  console.log('start timer', time);
+  const timeoutId = setTimeout(() => {
+    this.soundService.stopAll();
+    console.log('stop all sounds');
+  }, time * 1000 * 60);
+  this.currentTimerId = timeoutId;
+}
 
 
  }

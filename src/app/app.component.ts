@@ -5,7 +5,7 @@ import { HeaderMenuComponent } from "./shared/components/header-menu/header-menu
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HomePageComponent, HeaderMenuComponent],
+  imports: [RouterOutlet, HeaderMenuComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
