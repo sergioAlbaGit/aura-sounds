@@ -43,6 +43,20 @@ export class SoundPanelComponent implements OnInit {
         volume: 0.0,
         initialized: false,
       },
+      {
+        name: 'Olas',
+        icon: 'assets/icons/svg/ola-del-mar.svg',
+        audioSrc: 'assets/sounds/waves.mp3',
+        volume: 0.0,
+        initialized: false,
+      },
+      {
+        name: 'Tibetan',
+        icon: 'assets/icons/svg/bowl-svgrepo-com.svg',
+        audioSrc: 'assets/sounds/tibetan-singing-bowl.mp3',
+        volume: 0.0,
+        initialized: false,
+      },
     ];
 
     this.soundService.setSounds(initialSounds);
