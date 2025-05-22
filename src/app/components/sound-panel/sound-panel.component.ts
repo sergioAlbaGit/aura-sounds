@@ -1,3 +1,4 @@
+// sound-panel.component.ts
 import { Component, OnInit, signal } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { SoundService, Sound } from '../../services/sound.service'; // <-- Importamos Sound
@@ -54,6 +55,13 @@ export class SoundPanelComponent implements OnInit {
         name: 'Tibetan',
         icon: 'assets/icons/svg/bowl-svgrepo-com.svg',
         audioSrc: 'assets/sounds/tibetan-singing-bowl.mp3',
+        volume: 0.0,
+        initialized: false,
+      },
+      {
+        name: 'Relaxing',
+        icon: 'assets/icons/svg/hamsa.svg',
+        audioSrc: 'assets/sounds/relaxing.ogg',
         volume: 0.0,
         initialized: false,
       },
